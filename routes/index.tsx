@@ -7,15 +7,17 @@ export default function Home() {
   return (
     <div class={tw`p-4 mx-auto max-w-screen-md`}>
       <img
-        src="/logo.svg"
-        height="100px"
-        alt="the fresh logo: a sliced lemon dripping with juice"
+        src="/icon.webp"
+        class={tw`w-12 h-12`}
+        alt="Not the fresh logo"
       />
       <p class={tw`my-6`}>
-        Welcome to `fresh`. Try updating this message in the ./routes/index.tsx
-        file, and refresh.
+        Front page WIP. Check out the below tho:
       </p>
-      <Counter start={3} />
+      <Counter />
+      <div class = {tw`mt-6 w-full`}>
+        <div class = {tw`mx-auto text-center bg-gray-900 text-white p-1`} onCopy = {e => e.clipboardData?.setData("text/plain", "https://moecounter.deno.dev/get/CUSTOM_NAME/img") }>https://moecounter.deno.dev/get/CUSTOM_NAME/img</div>
+      </div>
     </div>
   );
 }
