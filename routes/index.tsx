@@ -22,7 +22,7 @@ export default function Home() {
       </p>
       <Counter />
       <div class = {tw`mt-6 w-full`}>
-        <div class = {tw`mx-auto text-center bg-gray-900 text-white p-1`} onCopy = {e => e.clipboardData?.setData("text/plain", "https://moecounter.deno.dev/get/CUSTOM_NAME/img") }>https://moecounter.deno.dev/get/CUSTOM_NAME/img</div>
+        <div class = {tw`mx-auto text-center bg-gray-900 text-white p-1`} onCopy = {e => e.clipboardData?.setData("text/plain", "https://count.nett.moe/get/CUSTOM_NAME/img") }>https://count.nett.moe/get/CUSTOM_NAME/img</div>
       </div>
     </div>
   );
