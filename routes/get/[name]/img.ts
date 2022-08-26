@@ -32,7 +32,7 @@ imageRes.filter((x) => x.isDirectory).forEach((x) => {
     dataURL: string;
     size: { height: string; width: string };
   }[] = [];
-  currentDir.forEach((y) => {
+  currentDir.sort((a, b) => Number(a.name.split(".")[0]) - Number(b.name.split(".")[0])).forEach((y) => {
     const path = `${__dirname}/../../../assets/theme/${x.name}/${y.name}`;
     const cType = contentType(
       y.name.split(".")[1],
