@@ -2,10 +2,16 @@
 import { h } from "preact";
 import { tw } from "@twind";
 import Counter from "../islands/Counter.tsx";
+import { Head } from "$fresh/runtime.ts";
 
 export default function Home() {
   return (
     <div class={tw`p-4 mx-auto max-w-screen-md`}>
+      <Head>
+        <title>Moe Counter by NeTT</title>
+        <meta name = "description" content="Counter inspired by journey-ad/Moe-counter " />
+        <meta name = "theme-color" content="#ff00c3" />
+      </Head>
       <img
         src="/icon.webp"
         class={tw`w-12 h-12`}
