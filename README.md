@@ -13,7 +13,7 @@ This will watch the project directory and restart as necessary.
 
 ## Use in your github readme
 ```markdown
-![:CUSTOM_NAME](https://count.nekooftheabyss.moe/get/CUSTOM_NAME/img?theme=THEME)
+![CUSTOM_NAME](https://count.nekooftheabyss.moe/get/CUSTOM_NAME/img?theme=THEME)
 ```
 
 ### Available Themes
