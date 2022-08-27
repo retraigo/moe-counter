@@ -95,5 +95,5 @@ export const handler = (req: Request, ctx: HandlerContext): Response => {
   if (!theme) theme = "gelbooru";
   const data = db.get(name);
   db.set(name, data.count + 1);
-  return new Response(generate(data.count, theme), {headers: {"Content-Type": "image/svg+xml"}});
+  return new Response(generate(data.count, theme), {headers: {"Content-Type": "image/svg+xml", 'cache-control': 'max-age=0, no-cache, no-store, must-revalidate'}});
 };
