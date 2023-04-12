@@ -22,7 +22,7 @@ export default function Home() {
       </p>
       <Counter />
       <div class = {tw`mt-6 w-full`}>
-        <div class = {tw`mx-auto text-center bg-gray-900 text-white p-1`} onCopy = {e => e.clipboardData?.setData("text/plain", "https://count.nekooftheabyss.moe/get/CUSTOM_NAME/img?theme=gelbooru") }>https://count.nekooftheabyss.moe/get/CUSTOM_NAME/img?theme=gelbooru | asoul | gelbooru-h | moebooru | moebooru-h | rule34 </div>
+        <div class = {tw`mx-auto text-center bg-gray-900 text-white p-1`} onCopy = {e => e.clipboardData?.setData("text/plain", "https://count.nett.moe/get/CUSTOM_NAME/img?theme=gelbooru") }>https://count.nett.moe/get/CUSTOM_NAME/img?theme=gelbooru | asoul | gelbooru-h | moebooru | moebooru-h | rule34 </div>
       </div>
       <a class = {tw`mt-6 block w-full`} href="https://github.com/retraigo/moe-counter">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
