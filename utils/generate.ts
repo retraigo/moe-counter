@@ -3,10 +3,8 @@ import { encode } from "base64";
 const __dirname = new URL(".", import.meta.url).pathname;
 
 function imageSize(byteArray: Uint8Array) {
-  const width = (byteArray[16] << 24) | (byteArray[17] << 16) |
-    (byteArray[18] << 8) | byteArray[19];
-  const height = (byteArray[20] << 24) | (byteArray[21] << 16) |
-    (byteArray[22] << 8) | byteArray[23];
+  const width = byteArray[6] | (byteArray[7] << 8);
+  const height = byteArray[8] | (byteArray[9] << 8);
   return { width, height };
 }
 
@@ -43,7 +41,8 @@ imageRes.filter((x) => x.isDirectory).forEach((x) => {
     const cType = contentType(
       y.name.split(".")[1],
     );
-    const img = Deno.readFileSync(path)
+
+    const img = Deno.readFileSync(path);
     const base64 = encode(img);
     const size = imageSize(img);
     files.push({
@@ -66,7 +65,6 @@ interface ImageElement {
 }
 
 export function generate(count: number, theme: string): string {
-  console.log(images)
   const imgs = (images.find((x) => x.theme === theme) || images[1]).files;
   const elements: ImageElement[] = [];
   const digits = String(count).padStart(7, "0").split("").map(Number);
