@@ -1,11 +1,9 @@
 import imageSize from "https://esm.sh/image-size@1.0.2";
-import {addZero} from "denouse"
 import { contentType } from "mediatypes";
 import { encode } from "base64";
 const __dirname = new URL(".", import.meta.url).pathname;
-console.log(Deno.readDirSync(`${__dirname}/../assets/theme`))
 const imageRes = Array.from(
-  Deno.readDirSync(`${__dirname}/../assets/theme`),
+  Deno.readDirSync(`assets/theme`),
 );
 
 const images: {
@@ -21,7 +19,7 @@ const images: {
 
 imageRes.filter((x) => x.isDirectory).forEach((x) => {
   const currentDir = Array.from(
-    Deno.readDirSync(`${__dirname}/../assets/theme/${x.name}`),
+    Deno.readDirSync(`assets/theme/${x.name}`),
   );
   const files: {
     name: string;
@@ -31,7 +29,7 @@ imageRes.filter((x) => x.isDirectory).forEach((x) => {
     size: { height: string; width: string };
   }[] = [];
   currentDir.sort((a, b) => Number(a.name.split(".")[0]) - Number(b.name.split(".")[0])).forEach((y) => {
-    const path = `${__dirname}/../assets/theme/${x.name}/${y.name}`;
+    const path = `assets/theme/${x.name}/${y.name}`;
     const cType = contentType(
       y.name.split(".")[1],
     );
@@ -39,7 +37,7 @@ imageRes.filter((x) => x.isDirectory).forEach((x) => {
     const size = imageSize(path);
     files.push({
       type: cType || "image",
-      path: `${__dirname}/../assets/theme/${x.name}/${y.name}`,
+      path: `assets/theme/${x.name}/${y.name}`,
       dataURL: `data:${cType};base64,${base64}`,
       name: y.name,
       size: { height: String(size.height), width: String(size.width) },
@@ -59,7 +57,7 @@ interface ImageElement {
 export function generate(count: number, theme: string): string {
   const imgs = (images.find((x) => x.theme === theme) || images[1]).files;
   const elements: ImageElement[] = [];
-  const digits = addZero(count, 7).split("").map(Number);
+  const digits = String(count).padStart(7, "0").split("").map(Number);
   let i = 0, x = 0, y = 0;
   while (i < digits.length) {
     elements.push({
