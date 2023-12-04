@@ -1,9 +1,11 @@
 import { HandlerContext } from "$fresh/server.ts";
-import db from "../../../utils/db.ts"
+import db from "../../../utils/db.ts";
 
-export const handler = (_req: Request, ctx: HandlerContext): Response => {
+export const handler = async (_req: Request, ctx: HandlerContext): Promise<Response> => {
   const name = ctx.params.name;
-  const data = db.get(name);
-  db.set(name, data.count+1)
-  return new Response(JSON.stringify(data));
+  const data = await db.get(["count", name]);
+  db.set(["count", name], (Number(data.value) || 0) + 1);
+  return new Response(
+    JSON.stringify({ name: name, count: (Number(data.value) || 0) }),
+  );
 };
