@@ -6,6 +6,7 @@ const __dirname = new URL(".", import.meta.url).pathname;
 const imageRes = Array.from(
   Deno.readDirSync(`assets/theme`),
 );
+console.log(imageRes)
 
 const images: {
   files: {
