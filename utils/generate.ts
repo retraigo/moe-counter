@@ -4,9 +4,8 @@ import { contentType } from "mediatypes";
 import { encode } from "base64";
 const __dirname = new URL(".", import.meta.url).pathname;
 const imageRes = Array.from(
-  Deno.readDirSync(`assets/theme`),
+  Deno.readDirSync(`${__dirname}/../assets/theme`),
 );
-console.log(imageRes)
 
 const images: {
   files: {
@@ -21,7 +20,7 @@ const images: {
 
 imageRes.filter((x) => x.isDirectory).forEach((x) => {
   const currentDir = Array.from(
-    Deno.readDirSync(`assets/theme/${x.name}`),
+    Deno.readDirSync(`${__dirname}/../assets/theme/${x.name}`),
   );
   const files: {
     name: string;
@@ -31,7 +30,7 @@ imageRes.filter((x) => x.isDirectory).forEach((x) => {
     size: { height: string; width: string };
   }[] = [];
   currentDir.sort((a, b) => Number(a.name.split(".")[0]) - Number(b.name.split(".")[0])).forEach((y) => {
-    const path = `assets/theme/${x.name}/${y.name}`;
+    const path = `${__dirname}/../assets/theme/${x.name}/${y.name}`;
     const cType = contentType(
       y.name.split(".")[1],
     );
@@ -39,7 +38,7 @@ imageRes.filter((x) => x.isDirectory).forEach((x) => {
     const size = imageSize(path);
     files.push({
       type: cType || "image",
-      path: `assets/theme/${x.name}/${y.name}`,
+      path: `${__dirname}/../assets/theme/${x.name}/${y.name}`,
       dataURL: `data:${cType};base64,${base64}`,
       name: y.name,
       size: { height: String(size.height), width: String(size.width) },
