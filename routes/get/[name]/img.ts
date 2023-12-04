@@ -1,6 +1,6 @@
 import { generate } from "../../../utils/generate.ts";
 import { HandlerContext } from "$fresh/server.ts";
-import db from "../../../utils/sqlite.ts";
+import db from "../../../utils/db.ts";
 
 export const handler = (req: Request, ctx: HandlerContext): Response => {
   const name = ctx.params.name;
