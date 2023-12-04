@@ -3,6 +3,7 @@ import {addZero} from "denouse"
 import { contentType } from "mediatypes";
 import { encode } from "base64";
 const __dirname = new URL(".", import.meta.url).pathname;
+console.log(Deno.readDirSync(`${__dirname}/../assets/theme`))
 const imageRes = Array.from(
   Deno.readDirSync(`${__dirname}/../assets/theme`),
 );
