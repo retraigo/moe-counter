@@ -1,7 +1,15 @@
-import imageSize from "https://esm.sh/image-size@1.0.2";
 import { contentType } from "mediatypes";
 import { encode } from "base64";
 const __dirname = new URL(".", import.meta.url).pathname;
+
+function imageSize(byteArray: Uint8Array) {
+  const width = (byteArray[16] << 24) | (byteArray[17] << 16) |
+    (byteArray[18] << 8) | byteArray[19];
+  const height = (byteArray[20] << 24) | (byteArray[21] << 16) |
+    (byteArray[22] << 8) | byteArray[23];
+  return { width, height };
+}
+
 const imageRes = Array.from(
   Deno.readDirSync(`assets/theme`),
 );
@@ -28,13 +36,16 @@ imageRes.filter((x) => x.isDirectory).forEach((x) => {
     dataURL: string;
     size: { height: string; width: string };
   }[] = [];
-  currentDir.sort((a, b) => Number(a.name.split(".")[0]) - Number(b.name.split(".")[0])).forEach((y) => {
+  currentDir.sort((a, b) =>
+    Number(a.name.split(".")[0]) - Number(b.name.split(".")[0])
+  ).forEach((y) => {
     const path = `assets/theme/${x.name}/${y.name}`;
     const cType = contentType(
       y.name.split(".")[1],
     );
-    const base64 = encode(Deno.readFileSync(path));
-    const size = imageSize(path);
+    const img = Deno.readFileSync(path)
+    const base64 = encode(img);
+    const size = imageSize(img);
     files.push({
       type: cType || "image",
       path: `assets/theme/${x.name}/${y.name}`,
@@ -68,7 +79,9 @@ export function generate(count: number, theme: string): string {
       "xlink:href": imgs[digits[i]].dataURL,
     });
     x += Number(imgs[digits[i]].size.width) || 0;
-    if ((Number(imgs[digits[i]].size.height) || 0) > y) y = Number(imgs[digits[i]].size.height) || y;
+    if ((Number(imgs[digits[i]].size.height) || 0) > y) {
+      y = Number(imgs[digits[i]].size.height) || y;
+    }
     i += 1;
   }
 
