@@ -66,6 +66,7 @@ interface ImageElement {
 }
 
 export function generate(count: number, theme: string): string {
+  console.log(images)
   const imgs = (images.find((x) => x.theme === theme) || images[1]).files;
   const elements: ImageElement[] = [];
   const digits = String(count).padStart(7, "0").split("").map(Number);
