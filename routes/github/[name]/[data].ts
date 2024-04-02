@@ -30,7 +30,7 @@ export const handler = async (
   let n = 0;
   switch (ctx.params.data) {
     case "stars": {
-      const res = await fetch(`https://api.github.com/users/${name}/repos?perpage=100`);
+      const res = await fetch(`https://api.github.com/users/${name}/repos?per_page=100`);
       if (res.status == 200) {
         n = await res.json().then((x) =>
           (x as RepoData[]).reduce(
