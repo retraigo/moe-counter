@@ -1,12 +1,11 @@
+import images from "../data.json" with { type: "json" }
+
+/*
 import { contentType } from "mediatypes";
 import { encode } from "base64";
 const __dirname = new URL(".", import.meta.url).pathname;
 
-function imageSize(byteArray: Uint8Array) {
-  const width = byteArray[6] | (byteArray[7] << 8);
-  const height = byteArray[8] | (byteArray[9] << 8);
-  return { width, height };
-}
+import {getImageSize} from "@lala/mieruko"
 
 const imageRes = Array.from(
   Deno.readDirSync(`assets/theme`),
@@ -44,7 +43,7 @@ imageRes.filter((x) => x.isDirectory).forEach((x) => {
 
     const img = Deno.readFileSync(path);
     const base64 = encode(img);
-    const size = imageSize(img);
+    const size = getImageSize(img);
     files.push({
       type: cType || "image",
       path: `assets/theme/${x.name}/${y.name}`,
@@ -56,6 +55,8 @@ imageRes.filter((x) => x.isDirectory).forEach((x) => {
   images.push({ files, theme: x.name });
 });
 
+Deno.writeTextFileSync("data.json", JSON.stringify(images))
+*/
 interface ImageElement {
   x: string;
   y: string;

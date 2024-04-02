@@ -1,5 +1,15 @@
 {
   "version": "3",
+  "packages": {
+    "specifiers": {
+      "jsr:@lala/mieruko@^0.0.1": "jsr:@lala/mieruko@0.0.1"
+    },
+    "jsr": {
+      "@lala/mieruko@0.0.1": {
+        "integrity": "37e6b599dc01f55f8ff51ab2b5371a2f8fcdf4bbe4beb33faa3e78a0b61b59b4"
+      }
+    }
+  },
   "redirects": {
     "https://crux.land/router@0.0.11": "https://crux.land/api/get/uYQG.ts"
   },

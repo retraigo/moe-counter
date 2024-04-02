@@ -10,6 +10,7 @@
     "sqlite": "https://deno.land/x/sqlite@v3.4.1/mod.ts",
     "mediatypes": "https://deno.land/std@0.153.0/media_types/mod.ts",
     "base64": "https://deno.land/std@0.153.0/encoding/base64.ts",
-    "denouse": "https://deno.land/x/denouse@v0.0.2/mod.ts"
+    "denouse": "https://deno.land/x/denouse@v0.0.2/mod.ts",
+    "@lala/mieruko": "jsr:@lala/mieruko@^0.0.1"
   }
 }
